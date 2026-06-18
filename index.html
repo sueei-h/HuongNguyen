@@ -1,139 +1,1429 @@
 <!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thử Nghiệm GitHub Pages</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VNU Nexus - Hành trình đại học cùng Nghê</title>
+  <style>
+    :root {
+      --color-navy: #102a43;
+      --color-navy-rgb: 16 42 67;
+      --color-ink: #17212b;
+      --color-ink-rgb: 23 33 43;
+      --color-blue: #1f4f7a;
+      --color-blue-rgb: 31 79 122;
+      --color-orange: #f27a1a;
+      --color-orange-rgb: 242 122 26;
+      --color-gold: #f6bd3b;
+      --color-gold-rgb: 246 189 59;
+      --color-cream: #fff5df;
+      --color-cream-rgb: 255 245 223;
+      --color-paper: #fffaf0;
+      --color-paper-rgb: 255 250 240;
+      --color-mint: #8cc9b6;
+      --color-mint-rgb: 140 201 182;
+      --color-rose: #d95f5f;
+      --color-white: #ffffff;
+      --line: 1px;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-7: 1.75rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-14: 3.5rem;
+      --space-16: 4rem;
+      --radius-sm: 0.75rem;
+      --radius-md: 1rem;
+      --radius-lg: 1.5rem;
+      --radius-xl: 2rem;
+      --radius-pill: 999px;
+      --shadow-soft: 0 1.25rem 3.5rem rgb(var(--color-navy-rgb) / 0.14);
+      --shadow-card: 0 0.9rem 2rem rgb(var(--color-ink-rgb) / 0.1);
+      --shadow-glow: 0 1rem 2.5rem rgb(var(--color-orange-rgb) / 0.25);
+      --font-display: Georgia, "Palatino Linotype", "Book Antiqua", serif;
+      --font-body: "Aptos", "Candara", "Trebuchet MS", sans-serif;
+      --font-mono: "Cascadia Mono", "Courier New", monospace;
+      --max-page: 74rem;
+      --nav-height: 4.75rem;
+      --transition-fast: 160ms ease;
+      --transition-slow: 520ms cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--color-cream);
+    }
+
+    body {
+      margin: 0;
+      min-width: 0;
+      overflow-x: hidden;
+      color: var(--color-ink);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at 14% 7%, rgb(var(--color-gold-rgb) / 0.28), transparent 22rem),
+        radial-gradient(circle at 88% 18%, rgb(var(--color-mint-rgb) / 0.28), transparent 20rem),
+        linear-gradient(135deg, var(--color-cream), var(--color-paper) 48%, rgb(var(--color-orange-rgb) / 0.1));
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      content: "";
+      background-image:
+        linear-gradient(rgb(var(--color-navy-rgb) / 0.035) var(--line), transparent var(--line)),
+        linear-gradient(90deg, rgb(var(--color-navy-rgb) / 0.035) var(--line), transparent var(--line));
+      background-size: 3rem 3rem;
+      mask-image: linear-gradient(to bottom, rgb(var(--color-ink-rgb) / 0.8), transparent 82%);
+    }
+
+    body::after {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      content: "";
+      background-image:
+        radial-gradient(circle, rgb(var(--color-ink-rgb) / 0.09) 0.055rem, transparent 0.055rem);
+      background-size: 1rem 1rem;
+      opacity: 0.45;
+      mix-blend-mode: multiply;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 0.2rem solid var(--color-gold);
+      outline-offset: 0.22rem;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--color-navy);
+      font-family: var(--font-display);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    h1 {
+      max-width: 13ch;
+      margin-bottom: var(--space-6);
+      font-size: clamp(3.2rem, 12vw, 7.8rem);
+    }
+
+    h2 {
+      margin-bottom: var(--space-4);
+      font-size: clamp(2.1rem, 6vw, 4rem);
+    }
+
+    h3 {
+      margin-bottom: var(--space-3);
+      font-size: clamp(1.35rem, 3vw, 1.9rem);
+    }
+
+    p {
+      margin-bottom: var(--space-4);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: var(--space-4);
+      top: var(--space-4);
+      z-index: 20;
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-pill);
+      color: var(--color-cream);
+      background: var(--color-navy);
+      transform: translateY(-180%);
+      transition: transform var(--transition-fast);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      min-height: var(--nav-height);
+      border-bottom: var(--line) solid rgb(var(--color-navy-rgb) / 0.12);
+      background: rgb(var(--color-cream-rgb) / 0.86);
+      backdrop-filter: blur(1.1rem);
+    }
+
+    .nav-inner {
+      width: min(var(--max-page), calc(100% - var(--space-6)));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: var(--space-4) 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      text-decoration: none;
+      font-weight: 800;
+      color: var(--color-navy);
+    }
+
+    .brand-mark {
+      width: 2.6rem;
+      height: 2.6rem;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius-md);
+      color: var(--color-cream);
+      background: linear-gradient(135deg, var(--color-navy), var(--color-blue));
+      box-shadow: var(--shadow-glow);
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+    }
+
+    .brand-name {
+      display: grid;
+      line-height: 1.05;
+    }
+
+    .brand-name small {
+      color: rgb(var(--color-ink-rgb) / 0.68);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-pill);
+      color: rgb(var(--color-navy-rgb) / 0.78);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="true"] {
+      color: var(--color-cream);
+      background: var(--color-navy);
+      transform: translateY(-0.08rem);
+    }
+
+    main {
+      width: min(var(--max-page), calc(100% - var(--space-6)));
+      margin: 0 auto;
+    }
+
+    section,
+    aside {
+      scroll-margin-top: calc(var(--nav-height) + var(--space-6));
+    }
+
+    .hero {
+      min-height: calc(100vh - var(--nav-height));
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(17rem, 0.96fr);
+      gap: var(--space-10);
+      align-items: center;
+      padding: var(--space-16) 0 var(--space-12);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+      padding: var(--space-2) var(--space-4);
+      border: var(--line) solid rgb(var(--color-orange-rgb) / 0.36);
+      border-radius: var(--radius-pill);
+      color: var(--color-navy);
+      background: rgb(var(--color-cream-rgb) / 0.78);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-copy {
+      animation: rise-in var(--transition-slow) both;
+    }
+
+    .hero-copy .lead {
+      max-width: 43rem;
+      color: rgb(var(--color-ink-rgb) / 0.78);
+      font-size: clamp(1.08rem, 2vw, 1.32rem);
+    }
+
+    .hero-actions,
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: center;
+      margin-top: var(--space-6);
+    }
+
+    .button {
+      min-height: 2.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      border: var(--line) solid transparent;
+      border-radius: var(--radius-pill);
+      padding: var(--space-3) var(--space-5);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .button:hover {
+      transform: translateY(-0.12rem);
+    }
+
+    .button-primary {
+      color: var(--color-cream);
+      background: var(--color-navy);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .button-primary:hover {
+      background: var(--color-blue);
+    }
+
+    .button-secondary {
+      color: var(--color-navy);
+      border-color: rgb(var(--color-navy-rgb) / 0.22);
+      background: rgb(var(--color-white) / 0.72);
+    }
+
+    .button-secondary:hover {
+      border-color: rgb(var(--color-orange-rgb) / 0.56);
+      background: var(--color-cream);
+    }
+
+    .hero-stage {
+      position: relative;
+      min-height: 36rem;
+      isolation: isolate;
+      animation: rise-in var(--transition-slow) 120ms both;
+    }
+
+    .hero-card {
+      position: absolute;
+      overflow: hidden;
+      border: var(--line) solid rgb(var(--color-navy-rgb) / 0.12);
+      border-radius: var(--radius-xl);
+      background: var(--color-paper);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-card-large {
+      inset: 0 4% 10% 10%;
+      transform: rotate(2deg);
+    }
+
+    .hero-card-small {
+      right: 0;
+      bottom: 0;
+      width: min(18rem, 58%);
+      aspect-ratio: 1;
+      border: 0.45rem solid var(--color-cream);
+      transform: rotate(-6deg);
+    }
+
+    .floating-note {
+      position: absolute;
+      left: 0;
+      bottom: 10%;
+      z-index: 2;
+      max-width: 16rem;
+      padding: var(--space-4);
+      border: var(--line) solid rgb(var(--color-orange-rgb) / 0.26);
+      border-radius: var(--radius-lg);
+      color: var(--color-navy);
+      background: rgb(var(--color-cream-rgb) / 0.9);
+      box-shadow: var(--shadow-card);
+      transform: rotate(-2deg);
+    }
+
+    .section-shell {
+      margin: var(--space-12) 0;
+      padding: var(--space-8);
+      border: var(--line) solid rgb(var(--color-navy-rgb) / 0.12);
+      border-radius: var(--radius-xl);
+      background: rgb(var(--color-paper-rgb) / 0.86);
+      box-shadow: var(--shadow-card);
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: minmax(0, 0.78fr) minmax(15rem, 0.42fr);
+      gap: var(--space-6);
+      align-items: end;
+      margin-bottom: var(--space-7);
+    }
+
+    .section-header p {
+      color: rgb(var(--color-ink-rgb) / 0.72);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(18rem, 1.05fr);
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+
+    .profile-card,
+    .dashboard-card,
+    .course-card,
+    .club-card,
+    .mentor-card,
+    .reward-card,
+    .image-panel,
+    .companion-card {
+      border: var(--line) solid rgb(var(--color-navy-rgb) / 0.1);
+      border-radius: var(--radius-lg);
+      background: var(--color-white);
+      box-shadow: var(--shadow-card);
+    }
+
+    .profile-card,
+    .dashboard-card,
+    .club-card,
+    .mentor-card,
+    .reward-card,
+    .companion-card {
+      padding: var(--space-6);
+    }
+
+    .field-grid {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    label {
+      display: grid;
+      gap: var(--space-2);
+      color: var(--color-navy);
+      font-weight: 800;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 3.1rem;
+      border: var(--line) solid rgb(var(--color-navy-rgb) / 0.18);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      color: var(--color-ink);
+      background: var(--color-paper);
+      font: inherit;
+    }
+
+    .profile-tip,
+    .dashboard-note,
+    .mini-label {
+      color: rgb(var(--color-ink-rgb) / 0.68);
+      font-size: 0.94rem;
+    }
+
+    .dashboard-card {
+      display: grid;
+      gap: var(--space-5);
+      background:
+        linear-gradient(135deg, rgb(var(--color-navy-rgb) / 0.97), rgb(var(--color-blue-rgb) / 0.94)),
+        var(--color-navy);
+      color: var(--color-cream);
+    }
+
+    .dashboard-card h3,
+    .dashboard-card .dashboard-note {
+      color: var(--color-cream);
+    }
+
+    .dashboard-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .dashboard-badges li,
+    .course-meta span,
+    .reward-tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: var(--radius-pill);
+      padding: var(--space-2) var(--space-3);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .dashboard-badges li {
+      color: var(--color-navy);
+      background: var(--color-gold);
+    }
+
+    .history-box {
+      min-height: 12rem;
+      border: var(--line) solid rgb(var(--color-cream-rgb) / 0.22);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      background: rgb(var(--color-cream-rgb) / 0.08);
+    }
+
+    #historyList {
+      display: grid;
+      gap: var(--space-2);
+      margin: 0;
+      padding-left: var(--space-5);
+    }
+
+    .filter-bar {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .course-grid,
+    .club-grid,
+    .mentor-grid,
+    .reward-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .course-card {
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-5);
+      transition: transform var(--transition-fast), opacity var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .course-card::before,
+    .club-card::before,
+    .mentor-card::before,
+    .reward-card::before {
+      display: block;
+      width: 3rem;
+      height: 0.35rem;
+      margin-bottom: var(--space-4);
+      border-radius: var(--radius-pill);
+      background: var(--color-orange);
+      content: "";
+    }
+
+    .course-card:hover,
+    .club-card:hover,
+    .mentor-card:hover,
+    .reward-card:hover {
+      transform: translateY(-0.18rem);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .course-card.is-hidden {
+      display: none;
+    }
+
+    .course-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin: var(--space-4) 0;
+    }
+
+    .course-meta span,
+    .reward-tag {
+      color: var(--color-navy);
+      background: rgb(var(--color-gold-rgb) / 0.38);
+    }
+
+    .card-list {
+      display: grid;
+      gap: var(--space-2);
+      padding-left: var(--space-5);
+      margin-bottom: var(--space-5);
+    }
+
+    .survey-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(16rem, 1.2fr);
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    #clubSuggestions {
+      display: grid;
+      gap: var(--space-3);
+      min-height: 14rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #clubSuggestions li {
+      padding: var(--space-4);
+      border: var(--line) solid rgb(var(--color-navy-rgb) / 0.1);
+      border-radius: var(--radius-md);
+      background: rgb(var(--color-cream-rgb) / 0.68);
+    }
+
+    .mentor-card,
+    .club-card,
+    .reward-card {
+      display: grid;
+      align-content: start;
+    }
+
+    .point-ledger {
+      display: grid;
+      grid-template-columns: minmax(13rem, 0.44fr) minmax(0, 1fr);
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+
+    .point-orb {
+      display: grid;
+      place-items: center;
+      min-height: 18rem;
+      border-radius: var(--radius-xl);
+      color: var(--color-cream);
+      background:
+        radial-gradient(circle at 35% 30%, rgb(var(--color-gold-rgb) / 0.75), transparent 7rem),
+        linear-gradient(135deg, var(--color-orange), var(--color-navy));
+      box-shadow: var(--shadow-glow);
+      text-align: center;
+    }
+
+    #pointTotal {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 12vw, 7rem);
+      line-height: 0.9;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--space-5);
+    }
+
+    .image-panel {
+      overflow: hidden;
+      min-height: 19rem;
+    }
+
+    .image-panel img {
+      width: 100%;
+      height: 100%;
+      min-height: 19rem;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .image-panel:hover img {
+      transform: scale(1.045);
+    }
+
+    .image-stack {
+      display: grid;
+      gap: var(--space-5);
+    }
+
+    .caption-card {
+      padding: var(--space-5);
+      border-top: var(--line) solid rgb(var(--color-navy-rgb) / 0.1);
+      background: var(--color-white);
+    }
+
+    .companion-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem);
+      gap: var(--space-6);
+      align-items: start;
+      margin-bottom: var(--space-14);
+    }
+
+    .companion-card {
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-5));
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgb(var(--color-white) / 0.96), rgb(var(--color-cream-rgb) / 0.92)),
+        var(--color-paper);
+    }
+
+    .companion-card img {
+      width: min(14rem, 82%);
+      margin: 0 auto var(--space-4);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+    }
+
+    #mascotMessage {
+      min-height: 7rem;
+      padding: var(--space-4);
+      border: var(--line) solid rgb(var(--color-orange-rgb) / 0.22);
+      border-radius: var(--radius-md);
+      color: var(--color-navy);
+      background: rgb(var(--color-gold-rgb) / 0.22);
+      font-weight: 800;
+    }
+
+    .footer {
+      margin-top: var(--space-12);
+      padding: var(--space-10) 0 var(--space-12);
+      color: var(--color-cream);
+      background: var(--color-navy);
+    }
+
+    .footer-inner {
+      width: min(var(--max-page), calc(100% - var(--space-6)));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.45fr);
+      gap: var(--space-6);
+    }
+
+    .footer h2,
+    .footer h3 {
+      color: var(--color-cream);
+    }
+
+    .footer a {
+      color: var(--color-gold);
+      font-weight: 800;
+    }
+
+    .footer-list {
+      display: grid;
+      gap: var(--space-2);
+      margin: 0;
+      padding-left: var(--space-5);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(var(--space-5));
+      animation: rise-in var(--transition-slow) both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 28%;
+    }
+
+    @keyframes rise-in {
+      from {
+        opacity: 0;
+        transform: translateY(var(--space-5));
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 58rem) {
+      .nav-inner,
+      .section-header,
+      .two-column,
+      .survey-panel,
+      .point-ledger,
+      .image-grid,
+      .companion-layout,
+      .footer-inner {
+        grid-template-columns: 1fr;
       }
 
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: #333;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        padding: 20px;
+      .nav-inner {
+        align-items: flex-start;
       }
 
-      .container {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 40px;
-        border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        max-width: 500px;
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: var(--space-10);
+      }
+
+      .hero-stage {
+        min-height: 30rem;
+      }
+
+      .course-grid,
+      .club-grid,
+      .mentor-grid,
+      .reward-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .companion-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 36rem) {
+      :root {
+        --space-6: 1.15rem;
+        --space-8: 1.35rem;
+        --space-10: 1.85rem;
+        --space-12: 2.15rem;
+        --space-16: 2.85rem;
+      }
+
+      main,
+      .nav-inner,
+      .footer-inner {
+        width: min(100% - var(--space-4), var(--max-page));
+      }
+
+      .brand-name small {
+        display: none;
+      }
+
+      .nav-inner {
+        display: grid;
+      }
+
+      .nav-links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         width: 100%;
-        transition: transform 0.3s ease;
       }
 
-      .container:hover {
-        transform: translateY(-5px);
+      .nav-links a {
+        text-align: center;
       }
 
-      .icon {
-        font-size: 50px;
-        margin-bottom: 20px;
-        animation: bounce 2s infinite;
+      .hero-stage {
+        min-height: 24rem;
       }
 
-      h1 {
-        color: #4a148c;
-        margin-bottom: 15px;
-        font-size: 28px;
+      .hero-card-large {
+        inset: 0 0 12% 0;
       }
 
-      p {
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 25px;
+      .hero-card-small {
+        width: 48%;
       }
 
-      .status-badge {
-        display: inline-block;
-        background-color: #2ed573;
-        color: white;
-        padding: 6px 16px;
-        border-radius: 20px;
-        font-weight: bold;
-        font-size: 14px;
-        margin-bottom: 25px;
-        box-shadow: 0 4px 10px rgba(46, 213, 115, 0.3);
+      .floating-note {
+        max-width: 13rem;
       }
 
-      .btn {
-        display: inline-block;
-        background: #764ba2;
-        color: white;
-        border: none;
-        padding: 12px 30px;
-        font-size: 16px;
-        font-weight: 600;
-        border-radius: 8px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4);
+      .section-shell {
+        padding: var(--space-5);
+        border-radius: var(--radius-lg);
       }
 
-      .btn:hover {
-        background: #667eea;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      .filter-bar,
+      .course-grid,
+      .club-grid,
+      .mentor-grid,
+      .reward-grid {
+        grid-template-columns: 1fr;
       }
 
-      .footer {
-        margin-top: 30px;
-        font-size: 12px;
-        color: #999;
+      .button {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto;
+        animation-duration: 1ms;
+        animation-iteration-count: 1;
+        transition-duration: 1ms;
       }
 
-      @keyframes bounce {
-        0%,
-        20%,
-        50%,
-        80%,
-        100% {
-          transform: translateY(0);
-        }
-        40% {
-          transform: translateY(-15px);
-        }
-        60% {
-          transform: translateY(-7px);
-        }
+      .reveal {
+        opacity: 1;
+        transform: none;
+        animation: none;
       }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="icon">🚀</div>
-      <h1>Chúc Mừng Bạn!</h1>
-      <div class="status-badge">Trang web hoạt động tốt</div>
-      <p>
-        Nếu bạn nhìn thấy giao diện này, điều đó có nghĩa là file HTML của bạn
-        đã được tải lên và cấu hình thành công trên GitHub Pages.
-      </p>
-
-      <!-- Nút bấm tương tác thử nghiệm Javascript cơ bản -->
-      <button class="btn" onclick="testClick()">Bấm thử vào tôi</button>
-
-      <div class="footer">
-        Trang web thử nghiệm được tạo tự động • GitHub Pages Test
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+  <nav class="site-nav" aria-label="Điều hướng chính">
+    <div class="nav-inner">
+      <a class="brand" href="#hero" aria-label="VNU Nexus về đầu trang">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span class="brand-name">VNU Nexus <small>Đi cùng Nghê</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#profile">Hồ sơ</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#academic">Academic Hub</a>
+        <a href="#clubs">CLB</a>
+        <a href="#mentors">Mentor</a>
+        <a href="#points">Nexus Point</a>
       </div>
     </div>
+  </nav>
 
-    <script>
-      function testClick() {
-        alert(
-          "Tuyệt vời! JavaScript trên trang web của bạn cũng đang hoạt động bình thường luôn nhé! 🎉",
-        );
+  <main id="main-content">
+    <section id="hero" class="hero" data-mascot="Chào mừng đến VNU Nexus. Nghê sẽ đi cùng bạn từ ngày đầu nhập học tới lễ tốt nghiệp.">
+      <div class="hero-copy">
+        <span class="eyebrow">Bản đồ đại học cá nhân hóa</span>
+        <h1>Hành trình VNU bớt lạc, nhiều kết nối hơn.</h1>
+        <p class="lead">VNU Nexus gom việc học, câu lạc bộ, mentor và phần thưởng vào một không gian ấm áp cho sinh viên. Bạn thiết lập hồ sơ, Nghê gợi ý bước tiếp theo, còn mọi hoạt động đều được ghi lại bằng Nexus Points.</p>
+        <div class="hero-actions">
+          <button class="button button-primary" type="button" id="heroCta">Bắt đầu cùng Nghê</button>
+          <a class="button button-secondary" href="#overview">Xem bản đồ trải nghiệm</a>
+        </div>
+      </div>
+      <div class="hero-stage">
+        <figure class="hero-card hero-card-large">
+          <img src="assets/images/campus-students.jpg" alt="Sinh viên VNU trò chuyện trên sân trường trong giờ chuyển tiết">
+        </figure>
+        <figure class="hero-card hero-card-small">
+          <img src="assets/images/mascot-hero.jpg" alt="Linh vật Nghê VNU Nexus trong khung thẻ chào mừng">
+        </figure>
+        <div class="floating-note">
+          <strong>Gợi ý hôm nay</strong>
+          <p>Hoàn thiện hồ sơ để Nghê mở bảng hoạt động theo năm học, trường và mục tiêu của bạn.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="companion-layout">
+      <div>
+        <section id="profile" class="section-shell reveal" data-mascot="Hãy cho Nghê biết bạn là ai. Dashboard sẽ đổi giọng ngay sau khi lưu hồ sơ.">
+          <div class="section-header">
+            <div>
+              <span class="eyebrow">01 / Onboarding</span>
+              <h2>Hồ sơ sinh viên mở khóa lộ trình.</h2>
+            </div>
+            <p>Điền vài thông tin nền tảng để VNU Nexus biến checklist chung thành kế hoạch có tên, có trường, có nhịp học phù hợp.</p>
+          </div>
+          <div class="two-column">
+            <form id="profileForm" class="profile-card" aria-describedby="profileHelp">
+              <p id="profileHelp" class="profile-tip">Thông tin chỉ dùng ngay trên trình duyệt của bạn trong bản tĩnh này.</p>
+              <div class="field-grid">
+                <label for="studentNameInput">Tên sinh viên
+                  <input id="studentNameInput" name="studentName" type="text" autocomplete="name" placeholder="Ví dụ: Hương Nguyễn">
+                </label>
+                <label for="studentYearInput">Năm học
+                  <select id="studentYearInput" name="studentYear">
+                    <option value="Năm 1">Năm 1 - Làm quen nhịp đại học</option>
+                    <option value="Năm 2">Năm 2 - Xây nền học thuật</option>
+                    <option value="Năm 3">Năm 3 - Dự án và thực tập</option>
+                    <option value="Năm 4">Năm 4+ - Tốt nghiệp và nghề nghiệp</option>
+                  </select>
+                </label>
+                <label for="studentSchoolInput">Trường/đơn vị thành viên
+                  <input id="studentSchoolInput" name="studentSchool" type="text" placeholder="Ví dụ: Trường ĐH Công nghệ">
+                </label>
+              </div>
+              <div class="action-row">
+                <button class="button button-primary" type="submit">Lưu hồ sơ VNU Nexus</button>
+              </div>
+            </form>
+
+            <article id="dashboard" class="dashboard-card" aria-labelledby="dashboardTitle" data-mascot="Dashboard là nơi Nghê tóm tắt ưu tiên học tập, CLB và điểm thưởng của bạn.">
+              <div>
+                <span class="eyebrow">Dashboard cá nhân</span>
+                <h3 id="dashboardTitle">Xin chào, tân sinh viên VNU.</h3>
+                <p id="dashboardSummary" class="dashboard-note">Lưu hồ sơ để nhận lời chào cá nhân hóa và nhật ký hoạt động đầu tiên.</p>
+              </div>
+              <ul class="dashboard-badges" aria-label="Trạng thái hồ sơ">
+                <li id="yearBadge">Chưa chọn năm</li>
+                <li id="schoolBadge">Chưa chọn trường</li>
+                <li id="pointBadge">0 Nexus Points</li>
+              </ul>
+              <div class="history-box">
+                <h3>Nhật ký hoạt động</h3>
+                <ol id="historyList" aria-live="polite">
+                  <li>Chưa có hoạt động. Nghê đang chờ bạn bắt đầu.</li>
+                </ol>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="academic" class="section-shell reveal" data-mascot="Academic Hub lọc môn học theo năm và độ thử thách để bạn không bị ngợp.">
+          <div class="section-header">
+            <div>
+              <span class="eyebrow">02 / Academic Hub</span>
+              <h2>Course cards cho từng nhịp học.</h2>
+            </div>
+            <p>Lọc nhanh các gợi ý học tập, workshop và dự án nhỏ. Mỗi thẻ có một hành động để cộng điểm khi bạn cam kết thử.</p>
+          </div>
+          <div class="filter-bar">
+            <label for="yearFilter">Lọc theo năm học
+              <select id="yearFilter">
+                <option value="all">Tất cả năm học</option>
+                <option value="year-1">Năm 1</option>
+                <option value="year-2">Năm 2</option>
+                <option value="year-3">Năm 3</option>
+                <option value="year-4">Năm 4+</option>
+              </select>
+            </label>
+            <label for="difficultyFilter">Lọc theo độ thử thách
+              <select id="difficultyFilter">
+                <option value="all">Tất cả độ khó</option>
+                <option value="gentle">Nhẹ nhàng</option>
+                <option value="steady">Vững nhịp</option>
+                <option value="bold">Thử thách</option>
+              </select>
+            </label>
+          </div>
+          <div class="course-grid" id="courseGrid">
+            <article class="course-card" data-year="year-1" data-difficulty="gentle">
+              <h3>Bản đồ tín chỉ 101</h3>
+              <p>Hiểu đăng ký học phần, lịch thi, chuẩn đầu ra và cách đọc đề cương môn học.</p>
+              <div class="course-meta"><span>Năm 1</span><span>Nhẹ nhàng</span></div>
+              <button class="button button-secondary point-action" type="button" data-points="10" data-message="Nghê đã cộng điểm học tập: bắt đầu từ bản đồ tín chỉ là rất chắc.">Lưu lộ trình học này</button>
+            </article>
+            <article class="course-card" data-year="year-2" data-difficulty="steady">
+              <h3>Phòng lab kỹ năng nghiên cứu</h3>
+              <p>Thực hành đọc paper, đặt câu hỏi, viết ghi chú và chuẩn bị seminar nhóm.</p>
+              <div class="course-meta"><span>Năm 2</span><span>Vững nhịp</span></div>
+              <button class="button button-secondary point-action" type="button" data-points="15" data-message="Nghê thích tinh thần nghiên cứu này. Bạn vừa thêm một hoạt động học thuật.">Tham gia lab học thuật</button>
+            </article>
+            <article class="course-card" data-year="year-3" data-difficulty="bold">
+              <h3>Dự án liên ngành mini</h3>
+              <p>Ghép sinh viên công nghệ, kinh tế, xã hội và truyền thông để giải một bài toán VNU.</p>
+              <div class="course-meta"><span>Năm 3</span><span>Thử thách</span></div>
+              <button class="button button-secondary point-action" type="button" data-points="20" data-message="Dự án liên ngành đã vào nhật ký. Nghê sẽ nhắc bạn tìm đồng đội phù hợp.">Mở thử thách dự án</button>
+            </article>
+            <article class="course-card" data-year="year-4" data-difficulty="steady">
+              <h3>Studio khóa luận và portfolio</h3>
+              <p>Biến khóa luận, báo cáo thực tập và sản phẩm học tập thành portfolio có câu chuyện.</p>
+              <div class="course-meta"><span>Năm 4+</span><span>Vững nhịp</span></div>
+              <button class="button button-secondary point-action" type="button" data-points="18" data-message="Nghê đã ghi nhận bước portfolio. Tốt nghiệp sẽ bớt vội hơn.">Lên kế hoạch tốt nghiệp</button>
+            </article>
+            <article class="course-card" data-year="year-1" data-difficulty="steady">
+              <h3>Tiếng Anh học thuật cùng bạn học</h3>
+              <p>Nhóm luyện nghe seminar, viết email học thuật và chuẩn bị trao đổi quốc tế.</p>
+              <div class="course-meta"><span>Năm 1</span><span>Vững nhịp</span></div>
+              <button class="button button-secondary point-action" type="button" data-points="12" data-message="Một buổi luyện tiếng Anh đã được Nghê thêm vào hành trình của bạn.">Đặt buổi luyện tập</button>
+            </article>
+            <article class="course-card" data-year="year-3" data-difficulty="gentle">
+              <h3>Chuẩn bị CV thực tập</h3>
+              <p>Checklist mô tả dự án, kỹ năng, kết quả đo được và cách xin nhận xét từ giảng viên.</p>
+              <div class="course-meta"><span>Năm 3</span><span>Nhẹ nhàng</span></div>
+              <button class="button button-secondary point-action" type="button" data-points="14" data-message="Nghê đã cộng điểm nghề nghiệp: CV tốt bắt đầu bằng chuyện thật.">Tạo checklist CV</button>
+            </article>
+          </div>
+        </section>
+
+        <section id="clubs" class="section-shell reveal" data-mascot="CLB là nơi lịch học biến thành tình bạn, kỹ năng và những buổi tối nhiều năng lượng.">
+          <div class="section-header">
+            <div>
+              <span class="eyebrow">03 / CLB & đời sống</span>
+              <h2>Survey nhanh, gợi ý CLB đúng vibe.</h2>
+            </div>
+            <p>Không cần đoán mò. Chọn một nút khảo sát để Nghê đề xuất nhóm hoạt động, sau đó lưu CLB yêu thích để nhận điểm.</p>
+          </div>
+          <div class="survey-panel">
+            <article class="club-card">
+              <h3>Khảo sát 30 giây</h3>
+              <p>Bấm để Nghê ghép sở thích học thuật, sáng tạo, cộng đồng và thể thao thành danh sách CLB nên thử trong tháng này.</p>
+              <button id="clubSurveyButton" class="button button-primary" type="button">Nhận gợi ý CLB từ Nghê</button>
+            </article>
+            <div>
+              <ul id="clubSuggestions" aria-live="polite">
+                <li><strong>Gợi ý mặc định:</strong> Hãy thử một CLB học thuật, một nhóm tình nguyện và một hoạt động thể chất để cân bằng tuần đầu.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="club-grid">
+            <article class="club-card">
+              <h3>Tech & Data Guild</h3>
+              <p>Demo dự án, học nhóm thuật toán, bản tin cơ hội thực tập.</p>
+              <button class="button button-secondary point-action" type="button" data-points="12" data-message="Nghê đã lưu CLB công nghệ cho bạn. Đừng quên đến buổi demo đầu tháng.">Theo dõi CLB công nghệ</button>
+            </article>
+            <article class="club-card">
+              <h3>Nexus Volunteer Crew</h3>
+              <p>Các chuyến đi cộng đồng, hỗ trợ sự kiện nhập học, hoạt động xanh.</p>
+              <button class="button button-secondary point-action" type="button" data-points="12" data-message="Tinh thần cộng đồng đã sáng lên. Nghê cộng điểm CLB tình nguyện.">Thử hoạt động tình nguyện</button>
+            </article>
+            <article class="club-card">
+              <h3>Creative Campus Studio</h3>
+              <p>Thiết kế poster, podcast sinh viên, triển lãm ảnh đời sống VNU.</p>
+              <button class="button button-secondary point-action" type="button" data-points="12" data-message="Nghê đã thêm studio sáng tạo vào nhật ký. Một góc campus mới đang chờ bạn kể lại.">Lưu CLB sáng tạo</button>
+            </article>
+          </div>
+        </section>
+
+        <section id="mentors" class="section-shell reveal" data-mascot="Mentor giúp bạn hỏi đúng câu trước khi chọn môn, chọn CLB hoặc chọn hướng nghề.">
+          <div class="section-header">
+            <div>
+              <span class="eyebrow">04 / Mentor & cộng đồng</span>
+              <h2>Đừng tự xoay sở một mình.</h2>
+            </div>
+            <p>Ba loại cuộc hẹn mentor giúp sinh viên mới kết nối anh chị khóa trên, giảng viên và nhóm bạn cùng mục tiêu.</p>
+          </div>
+          <div class="mentor-grid">
+            <article class="mentor-card">
+              <h3>Hỏi anh chị khóa trên</h3>
+              <ul class="card-list">
+                <li>Cách chọn giảng viên và nhóm học.</li>
+                <li>Mẹo cân bằng deadline và CLB.</li>
+                <li>Checklist đồ dùng tuần đầu.</li>
+              </ul>
+              <button class="button button-secondary point-action" type="button" data-points="16" data-message="Nghê đã ghi nhận một phiên hỏi anh chị khóa trên. Câu hỏi nhỏ có thể tiết kiệm cả học kỳ.">Đặt prompt mentor sinh viên</button>
+            </article>
+            <article class="mentor-card">
+              <h3>Office hour với giảng viên</h3>
+              <ul class="card-list">
+                <li>Chuẩn bị câu hỏi trước buổi gặp.</li>
+                <li>Xin phản hồi về hướng nghiên cứu.</li>
+                <li>Học cách gửi email lịch sự.</li>
+              </ul>
+              <button class="button button-secondary point-action" type="button" data-points="18" data-message="Nghê cộng điểm mentor học thuật. Một email rõ ràng là bước đầu rất chuyên nghiệp.">Soạn lịch office hour</button>
+            </article>
+            <article class="mentor-card">
+              <h3>Vòng tròn bạn học</h3>
+              <ul class="card-list">
+                <li>Ghép nhóm học theo môn khó.</li>
+                <li>Nhắc lịch ôn thi nhẹ nhàng.</li>
+                <li>Chia sẻ tài liệu có nguồn rõ ràng.</li>
+              </ul>
+              <button class="button button-secondary point-action" type="button" data-points="14" data-message="Nghê đã thêm vòng tròn bạn học. Đại học dễ thở hơn khi có người cùng nhịp.">Tạo nhóm bạn học</button>
+            </article>
+          </div>
+        </section>
+
+        <section id="points" class="section-shell reveal" data-mascot="Nexus Points không phải để chạy đua. Chúng giúp bạn thấy mỗi bước nhỏ đang tích lũy thành hành trình lớn.">
+          <div class="section-header">
+            <div>
+              <span class="eyebrow">05 / Nexus Point</span>
+              <h2>Điểm thưởng cho thói quen tốt.</h2>
+            </div>
+            <p>Các hành động học tập, CLB và mentor đều cộng điểm. Mốc thưởng tạo cảm giác tiến bộ mà vẫn giữ tinh thần sinh viên.</p>
+          </div>
+          <div class="point-ledger">
+            <div class="point-orb">
+              <p><span id="pointTotal">0</span> Nexus Points</p>
+            </div>
+            <div class="reward-grid">
+              <article class="reward-card">
+                <span class="reward-tag">50 điểm</span>
+                <h3>Huy hiệu Nghê nhập môn</h3>
+                <p>Hoàn thành hồ sơ, lưu một course card và tham gia một CLB.</p>
+              </article>
+              <article class="reward-card">
+                <span class="reward-tag">120 điểm</span>
+                <h3>Bản đồ campus cá nhân</h3>
+                <p>Mở gợi ý lịch học, khu tự học, CLB và mentor theo tuần.</p>
+              </article>
+              <article class="reward-card">
+                <span class="reward-tag">240 điểm</span>
+                <h3>Áo khoác tinh thần VNU</h3>
+                <p>Mốc biểu tượng để tự hào về hành trình đã bền bỉ theo đuổi.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="overview" class="section-shell reveal" data-mascot="Đây là toàn cảnh VNU Nexus: campus, lễ tốt nghiệp, sitemap, sticker Nghê và biểu tượng áo khoác đều thuộc một câu chuyện.">
+          <div class="section-header">
+            <div>
+              <span class="eyebrow">06 / Overview</span>
+              <h2>Một hệ sinh thái, nhiều khoảnh khắc nhớ lâu.</h2>
+            </div>
+            <p>Phần hình ảnh giúp trang tĩnh không chỉ là sitemap: nó kể câu chuyện từ ngày đầu nhập học, bản đồ tính năng, sticker đồng hành tới lễ tốt nghiệp.</p>
+          </div>
+          <div class="image-grid">
+            <figure class="image-panel">
+              <img src="assets/images/sitemap-board.jpg" alt="Bảng sitemap VNU Nexus với các nhánh học tập, CLB, mentor và điểm thưởng">
+              <figcaption class="caption-card"><strong>Sitemap sống:</strong> mọi nhánh đều quay lại mục tiêu giúp sinh viên định hướng nhanh hơn.</figcaption>
+            </figure>
+            <div class="image-stack">
+              <figure class="image-panel">
+                <img src="assets/images/graduation.jpg" alt="Sinh viên tốt nghiệp trong không khí trang trọng và ấm áp">
+                <figcaption class="caption-card"><strong>Đích đến:</strong> tốt nghiệp với mạng lưới bạn bè, mentor và dự án đã tích lũy.</figcaption>
+              </figure>
+              <figure class="image-panel">
+                <img src="assets/images/vnu-jacket.jpg" alt="Áo khoác VNU như phần thưởng biểu tượng cho hành trình sinh viên">
+                <figcaption class="caption-card"><strong>Biểu tượng:</strong> phần thưởng nhỏ, cảm giác thuộc về lớn.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="companion-card" aria-labelledby="companionTitle" data-mascot="Nghê đang quan sát phần bạn đọc để đưa gợi ý đúng thời điểm.">
+        <img src="assets/images/mascot-stickers.jpg" alt="Bộ sticker linh vật Nghê với nhiều biểu cảm đồng hành cùng sinh viên">
+        <span class="eyebrow">Companion</span>
+        <h2 id="companionTitle">Nghê nhắn bạn</h2>
+        <p id="mascotMessage" aria-live="polite">Chào bạn, mình là Nghê. Bắt đầu bằng hồ sơ sinh viên nhé, rồi mình sẽ gợi ý course, CLB, mentor và phần thưởng phù hợp.</p>
+        <p class="mini-label">Tin nhắn này thay đổi khi bạn cuộn trang hoặc thực hiện hành động.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <span class="eyebrow">VNU Nexus static prototype</span>
+        <h2>GitHub Pages-ready, offline-friendly.</h2>
+        <p>Một file HTML duy nhất, dùng ảnh cục bộ, CSS và JavaScript inline để mô phỏng trải nghiệm onboarding, học tập, CLB, mentor và điểm thưởng.</p>
+      </div>
+      <div>
+        <h3>Điểm kiểm tra nhanh</h3>
+        <ul class="footer-list">
+          <li><a href="#profile">Tạo hồ sơ</a></li>
+          <li><a href="#academic">Lọc course cards</a></li>
+          <li><a href="#clubs">Nhận gợi ý CLB</a></li>
+          <li><a href="#points">Xem Nexus Points</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const state = {
+      name: "",
+      year: "",
+      school: "",
+      points: 0,
+      history: []
+    };
+
+    const elements = {
+      profileForm: document.getElementById("profileForm"),
+      studentNameInput: document.getElementById("studentNameInput"),
+      studentYearInput: document.getElementById("studentYearInput"),
+      studentSchoolInput: document.getElementById("studentSchoolInput"),
+      yearFilter: document.getElementById("yearFilter"),
+      difficultyFilter: document.getElementById("difficultyFilter"),
+      clubSurveyButton: document.getElementById("clubSurveyButton"),
+      clubSuggestions: document.getElementById("clubSuggestions"),
+      pointTotal: document.getElementById("pointTotal"),
+      historyList: document.getElementById("historyList"),
+      mascotMessage: document.getElementById("mascotMessage"),
+      dashboardTitle: document.getElementById("dashboardTitle"),
+      dashboardSummary: document.getElementById("dashboardSummary"),
+      yearBadge: document.getElementById("yearBadge"),
+      schoolBadge: document.getElementById("schoolBadge"),
+      pointBadge: document.getElementById("pointBadge"),
+      heroCta: document.getElementById("heroCta")
+    };
+
+    const clubSets = [
+      [
+        ["Tech & Data Guild", "Nếu bạn thích logic, sản phẩm và thử thách dữ liệu, đây là nơi bắt đầu."],
+        ["Nexus Volunteer Crew", "Một lịch hoạt động cộng đồng giúp tuần học có ý nghĩa hơn."],
+        ["English Debate Circle", "Luyện phản biện, thuyết trình và sự tự tin trong môi trường quốc tế."]
+      ],
+      [
+        ["Creative Campus Studio", "Dành cho bạn thích poster, ảnh, podcast và kể chuyện sinh viên."],
+        ["Green VNU Lab", "Một nhóm nhẹ nhàng để tham gia hoạt động xanh quanh campus."],
+        ["Research Reading Room", "Không gian đọc paper cùng nhau để bớt cô đơn khi gặp tài liệu khó."]
+      ],
+      [
+        ["Sports Sunset Club", "Giữ năng lượng bằng các buổi chạy, cầu lông hoặc yoga sau giờ học."],
+        ["Startup Coffee Table", "Nói chuyện ý tưởng, khách hàng, pitch deck và những thử nghiệm nhỏ."],
+        ["Culture Night Crew", "Tổ chức đêm văn hóa, âm nhạc và kết nối sinh viên các trường."]
+      ]
+    ];
+
+    function setMascotMessage(message) {
+      elements.mascotMessage.textContent = message;
+    }
+
+    function addHistory(text) {
+      state.history.unshift(text);
+      state.history = state.history.slice(0, 7);
+      renderHistory();
+    }
+
+    function renderHistory() {
+      elements.historyList.innerHTML = "";
+      const items = state.history.length ? state.history : ["Chưa có hoạt động. Nghê đang chờ bạn bắt đầu."];
+      items.forEach((item) => {
+        const historyItem = document.createElement("li");
+        historyItem.textContent = item;
+        elements.historyList.append(historyItem);
+      });
+    }
+
+    function updatePoints(points, reason) {
+      state.points += points;
+      elements.pointTotal.textContent = String(state.points);
+      elements.pointBadge.textContent = `${state.points} Nexus Points`;
+      addHistory(`+${points} điểm: ${reason}`);
+    }
+
+    function personalizeDashboard() {
+      const name = elements.studentNameInput.value.trim() || "bạn";
+      const year = elements.studentYearInput.value;
+      const school = elements.studentSchoolInput.value.trim() || "một đơn vị VNU";
+
+      state.name = name;
+      state.year = year;
+      state.school = school;
+
+      elements.dashboardTitle.textContent = `Xin chào, ${name}.`;
+      elements.dashboardSummary.textContent = `${year} tại ${school}: Nghê đề xuất bắt đầu bằng một course card, một CLB và một cuộc hẹn mentor trong tuần này.`;
+      elements.yearBadge.textContent = year;
+      elements.schoolBadge.textContent = school;
+      updatePoints(20, "Hoàn thiện hồ sơ sinh viên");
+      setMascotMessage(`${name}, hồ sơ đã sẵn sàng. Nghê sẽ ưu tiên gợi ý phù hợp với ${year} tại ${school}.`);
+    }
+
+    function filterCourses() {
+      const year = elements.yearFilter.value;
+      const difficulty = elements.difficultyFilter.value;
+      const cards = document.querySelectorAll(".course-card");
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const matchesYear = year === "all" || card.dataset.year === year;
+        const matchesDifficulty = difficulty === "all" || card.dataset.difficulty === difficulty;
+        const shouldShow = matchesYear && matchesDifficulty;
+        card.classList.toggle("is-hidden", !shouldShow);
+        if (shouldShow) {
+          visibleCount += 1;
+        }
+      });
+
+      setMascotMessage(`Nghê đã lọc Academic Hub: còn ${visibleCount} course card phù hợp với lựa chọn hiện tại.`);
+    }
+
+    function updateClubSuggestions() {
+      const selectedSet = clubSets[Math.floor(Math.random() * clubSets.length)];
+      elements.clubSuggestions.innerHTML = "";
+      selectedSet.forEach(([title, description]) => {
+        const item = document.createElement("li");
+        item.innerHTML = `<strong>${title}:</strong> ${description}`;
+        elements.clubSuggestions.append(item);
+      });
+      updatePoints(10, "Hoàn thành khảo sát gợi ý CLB");
+      setMascotMessage("Nghê đã đổi danh sách CLB. Hãy chọn một nhóm đủ vui để bạn muốn quay lại tuần sau.");
+    }
+
+    function handlePointAction(event) {
+      const button = event.currentTarget;
+      const points = Number(button.dataset.points || 0);
+      const message = button.dataset.message || "Nghê đã ghi nhận hoạt động mới.";
+      updatePoints(points, button.textContent.trim());
+      setMascotMessage(message);
+    }
+
+    function setupSectionObserver() {
+      const sections = document.querySelectorAll("section[data-mascot], aside[data-mascot]");
+      const navLinks = document.querySelectorAll(".nav-links a");
+
+      if (!("IntersectionObserver" in window)) {
+        return;
       }
-    </script>
-  </body>
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+          const message = entry.target.dataset.mascot;
+          if (message) {
+            setMascotMessage(message);
+          }
+          navLinks.forEach((link) => {
+            const isCurrent = link.getAttribute("href") === `#${entry.target.id}`;
+            if (isCurrent) {
+              link.setAttribute("aria-current", "true");
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          });
+        });
+      }, { rootMargin: "-38% 0px -48% 0px", threshold: 0.12 });
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    }
+
+    elements.profileForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      personalizeDashboard();
+      document.getElementById("dashboard").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    elements.heroCta.addEventListener("click", () => {
+      document.getElementById("profile").scrollIntoView({ behavior: "smooth", block: "start" });
+      setMascotMessage("Bắt đầu ở hồ sơ nhé. Chỉ cần tên, năm học và trường là Nghê có thể cá nhân hóa dashboard.");
+    });
+
+    elements.yearFilter.addEventListener("change", filterCourses);
+    elements.difficultyFilter.addEventListener("change", filterCourses);
+    elements.clubSurveyButton.addEventListener("click", updateClubSuggestions);
+    document.querySelectorAll(".point-action").forEach((button) => {
+      button.addEventListener("click", handlePointAction);
+    });
+
+    renderHistory();
+    setupSectionObserver();
+  </script>
+</body>
 </html>
