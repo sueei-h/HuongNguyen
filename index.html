@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VNU Nexus - Hành trình đại học cùng Nghê</title>
+  <link rel="icon" href="data:,">
   <style>
     :root {
       --color-navy: #102a43;
@@ -45,10 +46,10 @@
       --shadow-soft: 0 1.25rem 3.5rem rgb(var(--color-navy-rgb) / 0.14);
       --shadow-card: 0 0.9rem 2rem rgb(var(--color-ink-rgb) / 0.1);
       --shadow-glow: 0 1rem 2.5rem rgb(var(--color-orange-rgb) / 0.25);
-      --font-display: Georgia, "Palatino Linotype", "Book Antiqua", serif;
-      --font-body: "Aptos", "Candara", "Trebuchet MS", sans-serif;
+      --font-display: "Aptos Display", "Aptos", "Segoe UI Variable Display", "Segoe UI", "Helvetica Neue", sans-serif;
+      --font-body: "Aptos", "Segoe UI", "Tahoma", "Candara", sans-serif;
       --font-mono: "Cascadia Mono", "Courier New", monospace;
-      --max-page: 74rem;
+      --max-page: 96rem;
       --nav-height: 4.75rem;
       --transition-fast: 160ms ease;
       --transition-slow: 520ms cubic-bezier(0.19, 1, 0.22, 1);
@@ -61,6 +62,8 @@
     html {
       scroll-behavior: smooth;
       background: var(--color-cream);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
@@ -132,19 +135,20 @@
     h3 {
       color: var(--color-navy);
       font-family: var(--font-display);
-      line-height: 1.05;
-      letter-spacing: -0.035em;
+      line-height: 1.16;
+      letter-spacing: 0;
+      text-wrap: balance;
     }
 
     h1 {
-      max-width: 13ch;
+      max-width: 20ch;
       margin-bottom: var(--space-6);
-      font-size: clamp(3.2rem, 12vw, 7.8rem);
+      font-size: clamp(2.85rem, 7.6vw, 5.8rem);
     }
 
     h2 {
       margin-bottom: var(--space-4);
-      font-size: clamp(2.1rem, 6vw, 4rem);
+      font-size: clamp(2.05rem, 4.4vw, 3.35rem);
     }
 
     h3 {
@@ -184,7 +188,7 @@
     }
 
     .nav-inner {
-      width: min(var(--max-page), calc(100% - var(--space-6)));
+      width: min(var(--max-page), calc(100% - var(--space-4)));
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -254,7 +258,7 @@
     }
 
     main {
-      width: min(var(--max-page), calc(100% - var(--space-6)));
+      width: min(var(--max-page), calc(100% - var(--space-4)));
       margin: 0 auto;
     }
 
@@ -264,10 +268,10 @@
     }
 
     .hero {
-      min-height: calc(100vh - var(--nav-height));
+      min-height: calc(100dvh - var(--nav-height));
       display: grid;
-      grid-template-columns: minmax(0, 1.04fr) minmax(17rem, 0.96fr);
-      gap: var(--space-10);
+      grid-template-columns: minmax(0, 1.18fr) minmax(22rem, 0.82fr);
+      gap: var(--space-12);
       align-items: center;
       padding: var(--space-16) 0 var(--space-12);
     }
@@ -294,9 +298,10 @@
     }
 
     .hero-copy .lead {
-      max-width: 43rem;
+      max-width: 56rem;
       color: rgb(var(--color-ink-rgb) / 0.78);
       font-size: clamp(1.08rem, 2vw, 1.32rem);
+      text-wrap: pretty;
     }
 
     .hero-actions,
@@ -341,7 +346,7 @@
     .button-secondary {
       color: var(--color-navy);
       border-color: rgb(var(--color-navy-rgb) / 0.22);
-      background: rgb(var(--color-white) / 0.72);
+      background: rgb(255 255 255 / 0.72);
     }
 
     .button-secondary:hover {
@@ -411,20 +416,22 @@
 
     .section-header {
       display: grid;
-      grid-template-columns: minmax(0, 0.78fr) minmax(15rem, 0.42fr);
-      gap: var(--space-6);
+      grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+      gap: var(--space-8);
       align-items: end;
       margin-bottom: var(--space-7);
     }
 
     .section-header p {
+      max-width: 42rem;
       color: rgb(var(--color-ink-rgb) / 0.72);
+      text-wrap: pretty;
     }
 
     .two-column {
       display: grid;
-      grid-template-columns: minmax(0, 0.95fr) minmax(18rem, 1.05fr);
-      gap: var(--space-6);
+      grid-template-columns: minmax(20rem, 0.78fr) minmax(0, 1.22fr);
+      gap: var(--space-8);
       align-items: stretch;
     }
 
@@ -433,8 +440,10 @@
     .course-card,
     .club-card,
     .mentor-card,
-    .reward-card,
-    .image-panel,
+    .point-profile,
+    .wardrobe-panel,
+    .wardrobe-card,
+    .activity-panel,
     .companion-card {
       border: var(--line) solid rgb(var(--color-navy-rgb) / 0.1);
       border-radius: var(--radius-lg);
@@ -446,7 +455,10 @@
     .dashboard-card,
     .club-card,
     .mentor-card,
-    .reward-card,
+    .point-profile,
+    .wardrobe-panel,
+    .wardrobe-card,
+    .activity-panel,
     .companion-card {
       padding: var(--space-6);
     }
@@ -507,7 +519,9 @@
 
     .dashboard-badges li,
     .course-meta span,
-    .reward-tag {
+    .wardrobe-tag,
+    .profile-pill,
+    .level-chip {
       display: inline-flex;
       align-items: center;
       border-radius: var(--radius-pill);
@@ -522,14 +536,6 @@
     .dashboard-badges li {
       color: var(--color-navy);
       background: var(--color-gold);
-    }
-
-    .history-box {
-      min-height: 12rem;
-      border: var(--line) solid rgb(var(--color-cream-rgb) / 0.22);
-      border-radius: var(--radius-md);
-      padding: var(--space-4);
-      background: rgb(var(--color-cream-rgb) / 0.08);
     }
 
     #historyList {
@@ -547,9 +553,14 @@
     }
 
     .course-grid,
+    .wardrobe-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
     .club-grid,
-    .mentor-grid,
-    .reward-grid {
+    .mentor-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: var(--space-5);
@@ -565,7 +576,7 @@
     .course-card::before,
     .club-card::before,
     .mentor-card::before,
-    .reward-card::before {
+    .wardrobe-card::before {
       display: block;
       width: 3rem;
       height: 0.35rem;
@@ -578,7 +589,7 @@
     .course-card:hover,
     .club-card:hover,
     .mentor-card:hover,
-    .reward-card:hover {
+    .wardrobe-card:hover {
       transform: translateY(-0.18rem);
       box-shadow: var(--shadow-soft);
     }
@@ -595,7 +606,9 @@
     }
 
     .course-meta span,
-    .reward-tag {
+    .wardrobe-tag,
+    .profile-pill,
+    .level-chip {
       color: var(--color-navy);
       background: rgb(var(--color-gold-rgb) / 0.38);
     }
@@ -609,8 +622,8 @@
 
     .survey-panel {
       display: grid;
-      grid-template-columns: minmax(0, 0.8fr) minmax(16rem, 1.2fr);
-      gap: var(--space-6);
+      grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.28fr);
+      gap: var(--space-8);
       align-items: start;
     }
 
@@ -632,76 +645,235 @@
 
     .mentor-card,
     .club-card,
-    .reward-card {
+    .wardrobe-card {
       display: grid;
       align-content: start;
     }
 
+    #points {
+      padding: var(--space-10);
+      border-color: rgb(var(--color-orange-rgb) / 0.18);
+      background:
+        radial-gradient(circle at 8% 10%, rgb(var(--color-gold-rgb) / 0.18), transparent 20rem),
+        linear-gradient(180deg, rgb(255 255 255 / 0.96), rgb(var(--color-cream-rgb) / 0.88)),
+        var(--color-paper);
+    }
+
     .point-ledger {
       display: grid;
-      grid-template-columns: minmax(13rem, 0.44fr) minmax(0, 1fr);
-      gap: var(--space-6);
+      grid-template-columns: minmax(20rem, 0.72fr) minmax(0, 1.28fr);
+      gap: var(--space-8);
       align-items: stretch;
     }
 
-    .point-orb {
+    .point-profile {
+      position: relative;
+      overflow: hidden;
       display: grid;
-      place-items: center;
-      min-height: 18rem;
-      border-radius: var(--radius-xl);
-      color: var(--color-cream);
+      gap: var(--space-5);
+      border: var(--line) solid rgb(var(--color-orange-rgb) / 0.18);
+      color: var(--color-navy);
       background:
-        radial-gradient(circle at 35% 30%, rgb(var(--color-gold-rgb) / 0.75), transparent 7rem),
-        linear-gradient(135deg, var(--color-orange), var(--color-navy));
-      box-shadow: var(--shadow-glow);
-      text-align: center;
+        radial-gradient(circle at 88% 10%, rgb(var(--color-gold-rgb) / 0.36), transparent 8rem),
+        radial-gradient(circle at 4% 92%, rgb(var(--color-orange-rgb) / 0.12), transparent 9rem),
+        linear-gradient(145deg, rgb(255 255 255 / 0.98), rgb(var(--color-cream-rgb) / 0.7));
+    }
+
+    .point-profile-header {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: var(--space-4);
+      align-items: center;
+    }
+
+    .point-avatar {
+      width: clamp(5rem, 13vw, 7rem);
+      aspect-ratio: 1;
+      border: 0.35rem solid var(--color-white);
+      border-radius: 1.6rem;
+      object-fit: cover;
+      box-shadow: var(--shadow-card);
+    }
+
+    .point-profile h3 {
+      margin: var(--space-2) 0 var(--space-1);
+      font-size: clamp(2rem, 5vw, 3.35rem);
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    .student-subtitle {
+      margin: 0;
+      color: rgb(var(--color-ink-rgb) / 0.72);
+      font-weight: 800;
+    }
+
+    .level-chip {
+      width: fit-content;
+      color: var(--color-cream);
+      background: linear-gradient(135deg, var(--color-gold), var(--color-orange));
+      font-variant-numeric: tabular-nums;
+    }
+
+    .point-level-row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      align-items: flex-end;
+    }
+
+    .point-count-label {
+      margin: 0;
+      color: rgb(var(--color-ink-rgb) / 0.68);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     #pointTotal {
-      display: block;
+      display: inline-block;
+      margin-right: var(--space-2);
       font-family: var(--font-display);
-      font-size: clamp(4rem, 12vw, 7rem);
-      line-height: 0.9;
+      font-size: clamp(2.2rem, 5vw, 3.45rem);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.05;
+      letter-spacing: 0;
     }
 
-    .image-grid {
+    #pointProgressText {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .xp-row {
+      position: relative;
+      z-index: 1;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: var(--space-5);
+      gap: var(--space-2);
     }
 
-    .image-panel {
+    .xp-row-header {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-3);
+      color: rgb(var(--color-ink-rgb) / 0.7);
+      font-size: 0.94rem;
+      font-weight: 800;
+    }
+
+    .xp-track {
+      --progress: 0%;
       overflow: hidden;
-      min-height: 19rem;
+      height: 1.05rem;
+      border: var(--line) solid rgb(var(--color-orange-rgb) / 0.22);
+      border-radius: var(--radius-pill);
+      background: rgb(var(--color-cream-rgb) / 0.76);
     }
 
-    .image-panel img {
+    .xp-track span {
+      display: block;
       width: 100%;
       height: 100%;
-      min-height: 19rem;
-      object-fit: cover;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--color-blue), var(--color-orange));
+      transform: scaleX(var(--progress-scale, 0));
+      transform-origin: left center;
       transition: transform var(--transition-slow);
     }
 
-    .image-panel:hover img {
-      transform: scale(1.045);
+    .nghe-reminder {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      padding: var(--space-4);
+      border: var(--line) solid rgb(var(--color-orange-rgb) / 0.16);
+      border-radius: var(--radius-md);
+      color: rgb(var(--color-ink-rgb) / 0.78);
+      background: rgb(var(--color-gold-rgb) / 0.18);
+      font-weight: 700;
     }
 
-    .image-stack {
+    .point-detail-stack {
       display: grid;
       gap: var(--space-5);
     }
 
-    .caption-card {
-      padding: var(--space-5);
-      border-top: var(--line) solid rgb(var(--color-navy-rgb) / 0.1);
-      background: var(--color-white);
+    .wardrobe-panel,
+    .activity-panel {
+      background:
+        linear-gradient(180deg, var(--color-white), rgb(var(--color-cream-rgb) / 0.72)),
+        var(--color-paper);
+    }
+
+    .panel-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      align-items: end;
+      margin-bottom: var(--space-5);
+    }
+
+    .panel-heading h3 {
+      margin-bottom: 0;
+    }
+
+    .wardrobe-card {
+      min-height: 11rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .wardrobe-card.is-selected {
+      border-color: rgb(var(--color-orange-rgb) / 0.34);
+      background: rgb(var(--color-gold-rgb) / 0.16);
+    }
+
+    .wardrobe-card.is-locked {
+      opacity: 0.48;
+      filter: grayscale(0.65);
+      box-shadow: none;
+    }
+
+    .wardrobe-card.is-locked:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .wardrobe-card p {
+      margin-bottom: 0;
+    }
+
+    .activity-panel #historyList {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .activity-panel #historyList li {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      border: var(--line) solid rgb(var(--color-navy-rgb) / 0.08);
+      border-radius: var(--radius-md);
+      background: rgb(255 255 255 / 0.72);
+    }
+
+    .history-xp {
+      flex: 0 0 auto;
+      color: var(--color-orange);
+      font-family: var(--font-mono);
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
     }
 
     .companion-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem);
-      gap: var(--space-6);
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 20rem);
+      gap: var(--space-8);
       align-items: start;
       margin-bottom: var(--space-14);
     }
@@ -711,7 +883,7 @@
       top: calc(var(--nav-height) + var(--space-5));
       overflow: hidden;
       background:
-        linear-gradient(180deg, rgb(var(--color-white) / 0.96), rgb(var(--color-cream-rgb) / 0.92)),
+        linear-gradient(180deg, rgb(255 255 255 / 0.96), rgb(var(--color-cream-rgb) / 0.92)),
         var(--color-paper);
     }
 
@@ -734,17 +906,32 @@
 
     .footer {
       margin-top: var(--space-12);
-      padding: var(--space-10) 0 var(--space-12);
+      padding: var(--space-5) 0;
       color: var(--color-cream);
       background: var(--color-navy);
     }
 
     .footer-inner {
-      width: min(var(--max-page), calc(100% - var(--space-6)));
+      width: min(var(--max-page), calc(100% - var(--space-4)));
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.45fr);
-      gap: var(--space-6);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .footer p {
+      margin: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
 
     .footer h2,
@@ -789,7 +976,6 @@
       .two-column,
       .survey-panel,
       .point-ledger,
-      .image-grid,
       .companion-layout,
       .footer-inner {
         grid-template-columns: 1fr;
@@ -815,7 +1001,7 @@
       .course-grid,
       .club-grid,
       .mentor-grid,
-      .reward-grid {
+      .wardrobe-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -882,8 +1068,20 @@
       .course-grid,
       .club-grid,
       .mentor-grid,
-      .reward-grid {
+      .wardrobe-grid {
         grid-template-columns: 1fr;
+      }
+
+      .point-profile-header,
+      .point-level-row,
+      .panel-heading {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .point-level-row,
+      .panel-heading {
+        display: grid;
       }
 
       .button {
@@ -936,7 +1134,7 @@
         <p class="lead">VNU Nexus gom việc học, câu lạc bộ, mentor và phần thưởng vào một không gian ấm áp cho sinh viên. Bạn thiết lập hồ sơ, Nghê gợi ý bước tiếp theo, còn mọi hoạt động đều được ghi lại bằng Nexus Points.</p>
         <div class="hero-actions">
           <button class="button button-primary" type="button" id="heroCta">Bắt đầu cùng Nghê</button>
-          <a class="button button-secondary" href="#overview">Xem bản đồ trải nghiệm</a>
+          <a class="button button-secondary" href="#points">Xem Nexus Points</a>
         </div>
       </div>
       <div class="hero-stage">
@@ -998,12 +1196,6 @@
                 <li id="schoolBadge">Chưa chọn trường</li>
                 <li id="pointBadge">0 Nexus Points</li>
               </ul>
-              <div class="history-box">
-                <h3>Nhật ký hoạt động</h3>
-                <ol id="historyList" aria-live="polite">
-                  <li>Chưa có hoạt động. Nghê đang chờ bạn bắt đầu.</li>
-                </ol>
-              </div>
             </article>
           </div>
         </section>
@@ -1162,51 +1354,74 @@
             <p>Các hành động học tập, CLB và mentor đều cộng điểm. Mốc thưởng tạo cảm giác tiến bộ mà vẫn giữ tinh thần sinh viên.</p>
           </div>
           <div class="point-ledger">
-            <div class="point-orb">
-              <p><span id="pointTotal">0</span> Nexus Points</p>
-            </div>
-            <div class="reward-grid">
-              <article class="reward-card">
-                <span class="reward-tag">50 điểm</span>
-                <h3>Huy hiệu Nghê nhập môn</h3>
-                <p>Hoàn thành hồ sơ, lưu một course card và tham gia một CLB.</p>
-              </article>
-              <article class="reward-card">
-                <span class="reward-tag">120 điểm</span>
-                <h3>Bản đồ campus cá nhân</h3>
-                <p>Mở gợi ý lịch học, khu tự học, CLB và mentor theo tuần.</p>
-              </article>
-              <article class="reward-card">
-                <span class="reward-tag">240 điểm</span>
-                <h3>Áo khoác tinh thần VNU</h3>
-                <p>Mốc biểu tượng để tự hào về hành trình đã bền bỉ theo đuổi.</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="overview" class="section-shell reveal" data-mascot="Đây là toàn cảnh VNU Nexus: campus, lễ tốt nghiệp, sitemap, sticker Nghê và biểu tượng áo khoác đều thuộc một câu chuyện.">
-          <div class="section-header">
-            <div>
-              <span class="eyebrow">06 / Overview</span>
-              <h2>Một hệ sinh thái, nhiều khoảnh khắc nhớ lâu.</h2>
-            </div>
-            <p>Phần hình ảnh giúp trang tĩnh không chỉ là sitemap: nó kể câu chuyện từ ngày đầu nhập học, bản đồ tính năng, sticker đồng hành tới lễ tốt nghiệp.</p>
-          </div>
-          <div class="image-grid">
-            <figure class="image-panel">
-              <img src="assets/images/sitemap-board.jpg" alt="Bảng sitemap VNU Nexus với các nhánh học tập, CLB, mentor và điểm thưởng">
-              <figcaption class="caption-card"><strong>Sitemap sống:</strong> mọi nhánh đều quay lại mục tiêu giúp sinh viên định hướng nhanh hơn.</figcaption>
-            </figure>
-            <div class="image-stack">
-              <figure class="image-panel">
-                <img src="assets/images/graduation.jpg" alt="Sinh viên tốt nghiệp trong không khí trang trọng và ấm áp">
-                <figcaption class="caption-card"><strong>Đích đến:</strong> tốt nghiệp với mạng lưới bạn bè, mentor và dự án đã tích lũy.</figcaption>
-              </figure>
-              <figure class="image-panel">
-                <img src="assets/images/vnu-jacket.jpg" alt="Áo khoác VNU như phần thưởng biểu tượng cho hành trình sinh viên">
-                <figcaption class="caption-card"><strong>Biểu tượng:</strong> phần thưởng nhỏ, cảm giác thuộc về lớn.</figcaption>
-              </figure>
+            <article class="point-profile" aria-labelledby="pointProfileTitle">
+              <div class="point-profile-header">
+                <img class="point-avatar" src="assets/images/mascot-hero.jpg" alt="Linh vật Nghê đại diện cho hồ sơ Nexus Point">
+                <div>
+                  <span class="profile-pill">Tân binh Nexus</span>
+                  <h3 id="pointProfileTitle">Tân sinh viên VNU</h3>
+                  <p class="student-subtitle"><span id="pointProfileYear">Năm 1</span> · <span id="pointProfileSchool">Chưa chọn trường</span></p>
+                </div>
+              </div>
+              <div class="point-level-row">
+                <span id="pointLevel" class="level-chip">Cấp 1</span>
+                <p class="point-count-label">Nexus Point: <span id="pointTotal">0</span> XP</p>
+              </div>
+              <div class="xp-row">
+                <div class="xp-row-header">
+                  <span>Tiến độ tới cấp tiếp theo</span>
+                  <span id="pointProgressText">0 / 50 XP để lên Cấp 2</span>
+                </div>
+                <div id="pointProgress" class="xp-track" role="progressbar" aria-label="Tiến độ Nexus Point đến cấp tiếp theo" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
+                  <span aria-hidden="true"></span>
+                </div>
+              </div>
+              <p class="nghe-reminder">Nghê nhắc nhẹ: điểm chỉ là dấu mốc. Một course card đã lưu, một buổi CLB đã thử, một câu hỏi mentor đã gửi mới là phần thưởng thật.</p>
+            </article>
+            <div class="point-detail-stack">
+              <section class="wardrobe-panel" aria-labelledby="wardrobeTitle">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">Tủ đồ tinh thần</span>
+                    <h3 id="wardrobeTitle">Phòng thay đồ của Nghê</h3>
+                  </div>
+                  <p class="mini-label">Mở khóa dần theo nhịp học, CLB và mentor.</p>
+                </div>
+                <div class="wardrobe-grid">
+                  <article class="wardrobe-card is-unlocked is-selected">
+                    <span class="wardrobe-tag">Đã chọn</span>
+                    <h3>Huy hiệu Nghê nhập môn</h3>
+                    <p>Hoàn thành hồ sơ và bắt đầu hành trình bằng những bước nhỏ.</p>
+                  </article>
+                  <article class="wardrobe-card is-unlocked">
+                    <span class="wardrobe-tag">50 XP</span>
+                    <h3>Sticker bạn học mới</h3>
+                    <p>Lưu một course card, thử một CLB và ghi lại hoạt động đầu tiên.</p>
+                  </article>
+                  <article class="wardrobe-card is-locked" aria-disabled="true">
+                    <span class="wardrobe-tag">120 XP</span>
+                    <h3>Bản đồ campus cá nhân</h3>
+                    <p>Mở gợi ý lịch học, khu tự học, CLB và mentor theo tuần.</p>
+                  </article>
+                  <article class="wardrobe-card is-locked" aria-disabled="true">
+                    <span class="wardrobe-tag">240 XP</span>
+                    <h3>Áo khoác tinh thần VNU</h3>
+                    <p>Mốc biểu tượng để tự hào về hành trình đã bền bỉ theo đuổi.</p>
+                  </article>
+                </div>
+              </section>
+              <section class="activity-panel" aria-labelledby="activityTitle">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">Hoạt động gần đây</span>
+                    <h3 id="activityTitle">Lịch sử hoạt động & tích điểm</h3>
+                  </div>
+                  <p class="mini-label">Các dòng mới nhất luôn nằm ở đầu nhật ký.</p>
+                </div>
+                <ol id="historyList" aria-live="polite">
+                  <li>Chưa có hoạt động. Nghê đang chờ bạn bắt đầu.</li>
+                </ol>
+              </section>
             </div>
           </div>
         </section>
@@ -1224,20 +1439,13 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <div>
-        <span class="eyebrow">VNU Nexus static prototype</span>
-        <h2>GitHub Pages-ready, offline-friendly.</h2>
-        <p>Một file HTML duy nhất, dùng ảnh cục bộ, CSS và JavaScript inline để mô phỏng trải nghiệm onboarding, học tập, CLB, mentor và điểm thưởng.</p>
-      </div>
-      <div>
-        <h3>Điểm kiểm tra nhanh</h3>
-        <ul class="footer-list">
-          <li><a href="#profile">Tạo hồ sơ</a></li>
-          <li><a href="#academic">Lọc course cards</a></li>
-          <li><a href="#clubs">Nhận gợi ý CLB</a></li>
-          <li><a href="#points">Xem Nexus Points</a></li>
-        </ul>
-      </div>
+      <p>© 2026 VNU Nexus. Prototype tĩnh cho hành trình sinh viên cùng Nghê.</p>
+      <ul class="footer-links" aria-label="Lối đi nhanh cuối trang">
+        <li><a href="#profile">Hồ sơ</a></li>
+        <li><a href="#academic">Academic Hub</a></li>
+        <li><a href="#clubs">CLB</a></li>
+        <li><a href="#points">Nexus Points</a></li>
+      </ul>
     </div>
   </footer>
 
@@ -1260,7 +1468,13 @@
       clubSurveyButton: document.getElementById("clubSurveyButton"),
       clubSuggestions: document.getElementById("clubSuggestions"),
       pointTotal: document.getElementById("pointTotal"),
+      pointLevel: document.getElementById("pointLevel"),
+      pointProgress: document.getElementById("pointProgress"),
+      pointProgressText: document.getElementById("pointProgressText"),
       historyList: document.getElementById("historyList"),
+      pointProfileTitle: document.getElementById("pointProfileTitle"),
+      pointProfileYear: document.getElementById("pointProfileYear"),
+      pointProfileSchool: document.getElementById("pointProfileSchool"),
       mascotMessage: document.getElementById("mascotMessage"),
       dashboardTitle: document.getElementById("dashboardTitle"),
       dashboardSummary: document.getElementById("dashboardSummary"),
@@ -1303,15 +1517,40 @@
       const items = state.history.length ? state.history : ["Chưa có hoạt động. Nghê đang chờ bạn bắt đầu."];
       items.forEach((item) => {
         const historyItem = document.createElement("li");
-        historyItem.textContent = item;
+        const match = item.match(/^\+(\d+) điểm: (.+)$/);
+        if (match) {
+          const reason = document.createElement("span");
+          reason.textContent = match[2];
+          const xp = document.createElement("span");
+          xp.className = "history-xp";
+          xp.textContent = `+${match[1]} XP`;
+          historyItem.append(reason, xp);
+        } else {
+          historyItem.textContent = item;
+        }
         elements.historyList.append(historyItem);
       });
+    }
+
+    function syncPointProgress() {
+      const levelSize = 50;
+      const level = Math.floor(state.points / levelSize) + 1;
+      const progress = state.points % levelSize;
+      const progressPercent = (progress / levelSize) * 100;
+
+      elements.pointLevel.textContent = `Cấp ${level}`;
+      elements.pointProgress.style.setProperty("--progress", `${progressPercent}%`);
+      elements.pointProgress.style.setProperty("--progress-scale", String(progressPercent / 100));
+      elements.pointProgress.setAttribute("aria-valuenow", String(progress));
+      elements.pointProgress.setAttribute("aria-valuetext", `${progress} trên ${levelSize} XP`);
+      elements.pointProgressText.textContent = `${progress} / ${levelSize} XP để lên Cấp ${level + 1}`;
     }
 
     function updatePoints(points, reason) {
       state.points += points;
       elements.pointTotal.textContent = String(state.points);
       elements.pointBadge.textContent = `${state.points} Nexus Points`;
+      syncPointProgress();
       addHistory(`+${points} điểm: ${reason}`);
     }
 
@@ -1328,6 +1567,9 @@
       elements.dashboardSummary.textContent = `${year} tại ${school}: Nghê đề xuất bắt đầu bằng một course card, một CLB và một cuộc hẹn mentor trong tuần này.`;
       elements.yearBadge.textContent = year;
       elements.schoolBadge.textContent = school;
+      elements.pointProfileTitle.textContent = name;
+      elements.pointProfileYear.textContent = year;
+      elements.pointProfileSchool.textContent = school;
       updatePoints(20, "Hoàn thiện hồ sơ sinh viên");
       setMascotMessage(`${name}, hồ sơ đã sẵn sàng. Nghê sẽ ưu tiên gợi ý phù hợp với ${year} tại ${school}.`);
     }
@@ -1422,6 +1664,7 @@
       button.addEventListener("click", handlePointAction);
     });
 
+    syncPointProgress();
     renderHistory();
     setupSectionObserver();
   </script>
